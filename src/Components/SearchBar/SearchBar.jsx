@@ -11,21 +11,12 @@ const useStyles = makeStyles(theme => ({
 		justifyContent: 'center',
 		alignItems: 'stretch',
 		height: '5rem',
+		margin: theme.spacing(0),
+		width: '100%',
 		borderRadius: theme.shape.borderRadius,
 		backgroundColor: fade(theme.palette.common.white, 0.15),
 		'&:hover': {
 			backgroundColor: fade(theme.palette.common.white, 0.25),
-		},
-		margin: theme.spacing(1),
-		width: '50%',
-		[theme.breakpoints.down('lg')]: {
-			width: '70%',
-		},
-		[theme.breakpoints.down('md')]: {
-			width: '80%',
-		},
-		[theme.breakpoints.down('sm')]: {
-			width: '90%',
 		},
 	},
 	searchIcon: {
