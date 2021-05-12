@@ -4,6 +4,7 @@ import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import SearchBar from '../SearchBar/SearchBar';
+import TheaterButtons from '../TheaterButtons/TheaterButtons';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -32,7 +33,7 @@ function Home() {
 				<SearchBar />
 			</Grid>
 			<Grid item xs={12} md={10} lg={8} xl={7}>
-				<SearchBar />
+				<TheaterButtons />
 			</Grid>
 			<Grid item xs={12} md={10} lg={8} xl={7}>
 				<SearchBar />
