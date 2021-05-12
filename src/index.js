@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { TheaterProvider } from '../src/context/TheaterContext';
+import { MovieProvider } from '../src/context/MovieContext';
+import { CurrentMoviesProvider } from '../src/context/CurrentMoviesContext';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { theme } from '../src/theme';
 import App from './Components/App/App';
@@ -8,7 +11,13 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={ theme }><App /></ThemeProvider>
+    <TheaterProvider>
+      <MovieProvider>
+        <CurrentMoviesProvider>
+          <ThemeProvider theme={ theme }><App /></ThemeProvider>
+        </CurrentMoviesProvider>
+      </MovieProvider>
+    </TheaterProvider>
   </React.StrictMode>,
   document.getElementById( 'root' )
 );

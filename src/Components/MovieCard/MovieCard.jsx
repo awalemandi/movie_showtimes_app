@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export default function MovieCard({ id, title, rating, posterUrl }) {
+export default function MovieCard({ id, title, rating, posterUrl, times }) {
 	const classes = useStyles();
 	return (
 		<Card className={classes.root}>
@@ -46,13 +46,15 @@ export default function MovieCard({ id, title, rating, posterUrl }) {
 						{title}
 					</Typography>
 					<Typography variant='subtitle1' color='textSecondary'>
-						{rating}
+						({rating})
 					</Typography>
 				</CardContent>
 				<div className={classes.times}>
-					<Typography variant='subtitle1' color='textSecondary'>
-						13:00
-					</Typography>
+					{/* {times.map(time => (
+						<Typography variant='subtitle1' color='textSecondary'>
+							{time}
+						</Typography>
+					))} */}
 				</div>
 			</div>
 		</Card>

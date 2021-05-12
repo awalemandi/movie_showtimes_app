@@ -21,7 +21,7 @@ export default function TheaterButtons() {
 	const classes = useStyles();
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.up('sm'));
-	const [theatersList, SetTheatersList] = useTheater();
+	const [theatersList, setTheatersList] = useTheater();
 
 	return (
 		<div className={classes.root}>
