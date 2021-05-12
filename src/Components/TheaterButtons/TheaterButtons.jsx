@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheater } from '../../context/TheaterContext';
 
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Button from '@material-ui/core/Button';
@@ -20,6 +21,7 @@ export default function TheaterButtons() {
 	const classes = useStyles();
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.up('sm'));
+	const [theatersList, SetTheatersList] = useTheater();
 
 	return (
 		<div className={classes.root}>
@@ -29,9 +31,9 @@ export default function TheaterButtons() {
 				orientation={matches ? 'horizontal' : 'vertical'}
 				fullWidth
 			>
-				<Button>Theater 1</Button>
-				<Button>THeater 2</Button>
-				<Button>Theater 3</Button>
+				{theatersList.map(theater => (
+					<Button key={theater.id}>{theater.name}</Button>
+				))}
 			</ButtonGroup>
 		</div>
 	);

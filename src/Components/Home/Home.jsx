@@ -1,5 +1,5 @@
 import React from 'react';
-import useFetchData from '../../hooks/useFetchData';
+// import useFetchData from '../../hooks/useFetchData';
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -25,10 +25,10 @@ const useStyles = makeStyles(theme => ({
 
 function Home() {
 	const classes = useStyles();
-	const [movieLoading, movieResponse, movieError] = useFetchData('/api/movies');
-	const [theaterLoading, theaterResponse, theaterError] = useFetchData(
-		'/api/theaters'
-	);
+	// const [movieLoading, movieResponse, movieError] = useFetchData('/api/movies');
+	// const [theaterLoading, theaterResponse, theaterError] = useFetchData(
+	// 	'/api/theaters'
+	// );
 
 	return (
 		<Grid
@@ -39,7 +39,6 @@ function Home() {
 			spacing={1}
 			className={classes.root}
 		>
-			{console.log(theaterResponse)}
 			<Grid item xs={12} md={10} lg={8} xl={7} className={classes.search}>
 				<SearchBar />
 			</Grid>

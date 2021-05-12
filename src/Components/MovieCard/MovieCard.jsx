@@ -35,22 +35,18 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export default function MediaControlCard() {
+export default function MovieCard({ id, title, rating, posterUrl }) {
 	const classes = useStyles();
 	return (
 		<Card className={classes.root}>
-			<CardMedia
-				className={classes.cover}
-				image='/static/images/cards/live-from-space.jpg'
-				title='Live from space album cover'
-			/>
+			<CardMedia className={classes.cover} image={posterUrl} title={title} />
 			<div className={classes.details}>
 				<CardContent className={classes.content}>
 					<Typography component='h5' variant='h5'>
-						Live From Space
+						{title}
 					</Typography>
 					<Typography variant='subtitle1' color='textSecondary'>
-						Mac Miller
+						{rating}
 					</Typography>
 				</CardContent>
 				<div className={classes.times}>
