@@ -11,7 +11,7 @@ function useFetchData ( url ) {
             try {
                 setLoading( true );
                 const res = await axios.get( url );
-                setResponse( res.data );
+                setResponse( res.data.data );
             } catch ( e ) {
                 setError( e );
             } finally {
@@ -22,7 +22,7 @@ function useFetchData ( url ) {
         fetchData();
     }, [ url ] );
 
-    return { loading, response, error };
+    return [ loading, response, error ];
 };
 
 export default useFetchData;

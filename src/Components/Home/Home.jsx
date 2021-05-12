@@ -25,8 +25,11 @@ const useStyles = makeStyles(theme => ({
 
 function Home() {
 	const classes = useStyles();
-	const movieData = useFetchData('/api/movies');
-	const theaterData = useFetchData('/api/theater');
+	const [movieLoading, movieResponse, movieError] = useFetchData('/api/movies');
+	const [theaterLoading, theaterResponse, theaterError] = useFetchData(
+		'/api/theaters'
+	);
+
 	return (
 		<Grid
 			container
@@ -36,7 +39,7 @@ function Home() {
 			spacing={1}
 			className={classes.root}
 		>
-			{console.log(movieData.response.data)}
+			{console.log(theaterResponse)}
 			<Grid item xs={12} md={10} lg={8} xl={7} className={classes.search}>
 				<SearchBar />
 			</Grid>
