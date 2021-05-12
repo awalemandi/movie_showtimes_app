@@ -6,17 +6,23 @@ import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles(theme => ({
 	search: {
-		display: 'flex',
+		display: 'inline-flex',
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'stretch',
-		height: '5rem',
+		height: '3rem',
 		margin: theme.spacing(0),
-		width: '100%',
+		width: '20%',
+		[theme.breakpoints.down('md')]: {
+			width: '40%',
+		},
+		[theme.breakpoints.down('sm')]: {
+			width: '70%',
+		},
 		borderRadius: theme.shape.borderRadius,
-		backgroundColor: fade(theme.palette.common.white, 0.15),
+		backgroundColor: fade(theme.palette.primary.main, 0.25),
 		'&:hover': {
-			backgroundColor: fade(theme.palette.common.white, 0.25),
+			backgroundColor: fade(theme.palette.primary.main, 0.35),
 		},
 	},
 	searchIcon: {

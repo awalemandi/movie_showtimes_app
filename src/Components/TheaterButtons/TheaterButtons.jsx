@@ -27,6 +27,7 @@ export default function TheaterButtons() {
 				size='large'
 				color='primary'
 				orientation={matches ? 'horizontal' : 'vertical'}
+				fullWidth
 			>
 				<Button>Theater 1</Button>
 				<Button>THeater 2</Button>

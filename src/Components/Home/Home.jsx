@@ -5,16 +5,21 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import SearchBar from '../SearchBar/SearchBar';
 import TheaterButtons from '../TheaterButtons/TheaterButtons';
+import MovieList from '../MovieList/MovieList';
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		height: '100%',
 		width: '100%',
+		padidng: theme.spacing(10, 5),
 	},
 	search: {
 		marginTop: theme.spacing(2),
 		borderRadius: theme.shape.borderRadius,
-		backgroundColor: theme.palette.secondary.light,
+		textAlign: 'center',
+	},
+	selection: {
+		width: '60%',
 	},
 }));
 
@@ -32,11 +37,11 @@ function Home() {
 			<Grid item xs={12} md={10} lg={8} xl={7} className={classes.search}>
 				<SearchBar />
 			</Grid>
-			<Grid item xs={12} md={10} lg={8} xl={7}>
+			<Grid item xs={12} md={10} lg={8} xl={7} className={classes.selection}>
 				<TheaterButtons />
 			</Grid>
 			<Grid item xs={12} md={10} lg={8} xl={7}>
-				<SearchBar />
+				<MovieList />
 			</Grid>
 		</Grid>
 	);
