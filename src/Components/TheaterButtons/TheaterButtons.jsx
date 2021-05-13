@@ -49,13 +49,13 @@ export default function TheaterButtons() {
 					orientation={matches ? 'horizontal' : 'vertical'}
 					fullWidth
 				>
-					<Button key={1} className={classes.butto}>
+					<Button key={1} className={classes.button}>
 						Loading..
 					</Button>
-					<Button key={2} className={classes.butto}>
+					<Button key={2} className={classes.button}>
 						Loading..
 					</Button>
-					<Button key={3} className={classes.butto}>
+					<Button key={3} className={classes.button}>
 						Loading..
 					</Button>
 				</ButtonGroup>

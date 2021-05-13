@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useSearch } from '../../context/SearchContext';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
 		alignItems: 'stretch',
 		height: '3rem',
 		margin: theme.spacing(0),
-		width: '20%',
+		width: '30%',
 		[theme.breakpoints.down('md')]: {
 			width: '40%',
 		},
@@ -34,33 +34,22 @@ const useStyles = makeStyles(theme => ({
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
-	inputRoot: {
-		color: 'inherit',
-	},
-	inputInput: {
-		padding: theme.spacing(0),
-		// vertical padding + font size from searchIcon
-		paddingLeft: `calc(1em + ${theme.spacing(1)}px)`,
-		transition: theme.transitions.create('width'),
-		width: '100%',
-	},
 }));
 
 function SearchBar() {
 	const classes = useStyles();
+	const [searchField, setSearchField] = useSearch();
+
+	const handleSearch = e => {
+		setSearchField(e.target.value);
+	};
+
 	return (
 		<div className={classes.search}>
 			<div className={classes.searchIcon}>
 				<SearchIcon />
 			</div>
-			<InputBase
-				placeholder='Search Movies...'
-				classes={{
-					root: classes.inputRoot,
-					input: classes.inputInput,
-				}}
-				inputProps={{ 'aria-label': 'search' }}
-			/>
+			<InputBase placeholder='Search Movies...' onChange={handleSearch} />
 		</div>
 	);
 }

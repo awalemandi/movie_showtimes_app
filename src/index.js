@@ -8,14 +8,17 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { theme } from '../src/theme';
 import App from './Components/App/App';
 import reportWebVitals from './reportWebVitals';
+import { SearchProvider } from './context/SearchContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <TheaterProvider>
       <MovieProvider>
-        <CurrentMoviesProvider>
-          <ThemeProvider theme={ theme }><App /></ThemeProvider>
-        </CurrentMoviesProvider>
+        <SearchProvider>
+          <CurrentMoviesProvider>
+            <ThemeProvider theme={ theme }><App /></ThemeProvider>
+          </CurrentMoviesProvider>
+        </SearchProvider>
       </MovieProvider>
     </TheaterProvider>
   </React.StrictMode>,

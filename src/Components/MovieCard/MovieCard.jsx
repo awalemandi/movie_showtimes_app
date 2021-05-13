@@ -48,7 +48,7 @@ export default function MovieCard({ id, title, rating, posterUrl, times }) {
 			<CardMedia className={classes.cover} image={posterUrl} title={title} />
 			<div className={classes.details}>
 				<CardContent className={classes.content}>
-					<Typography component='h5' variant='h5'>
+					<Typography component='h6' variant='h6'>
 						{title}
 					</Typography>
 					<Typography variant='body1' color='textSecondary'>

@@ -1,24 +1,29 @@
 import React, { useState, useEffect } from 'react';
+import { useSearch } from '../../context/SearchContext';
 import { useMovie } from '../../context/MovieContext';
 import { useCurrentMovies } from '../../context/CurrentMoviesContext';
 import { useCurrentTheater } from '../../context/CurrentMoviesContext';
 import { makeStyles } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
 import MovieCard from '../MovieCard/MovieCard';
 
 const useStyles = makeStyles(theme => ({
 	list: {
 		display: 'flex',
 		flexDirection: 'column',
-		justifyContent: 'space-around',
+		justifyContent: 'flex-start',
 		alignItems: 'center',
+		minHeight: '50rem',
 	},
 }));
 
 function MovieList() {
 	const classes = useStyles();
+	const [searchField, setSearchField] = useSearch();
 	const [movies, moviesLoading] = useMovie();
 	const [currentTheater, setCurrentTheater] = useCurrentTheater();
 	const [currentMovies, setCurrentMovies] = useCurrentMovies();
+	const [filteredMovies, setFilteredMovies] = useState([]);
 	const [movieTimes, setMovieTimes] = useState({});
 
 	const getMovieInfo = movieId => {
@@ -42,11 +47,6 @@ function MovieList() {
 		}
 	}, [currentTheater, movies]);
 
-	const getMovieTimes = movieId => {
-		if (currentTheater) {
-			return Object.values(currentTheater['showtimes'][movieId]);
-		}
-	};
 	useEffect(() => {
 		if (currentTheater) {
 			const movieShowTimes = currentTheater['showtimes'];
@@ -54,19 +54,31 @@ function MovieList() {
 		}
 	}, [currentTheater]);
 
+	useEffect(() => {
+		setFilteredMovies(
+			currentMovies.filter(movie =>
+				movie.title.toLowerCase().includes(searchField.toLowerCase())
+			)
+		);
+	}, [searchField, currentMovies]);
+
 	return moviesLoading ? (
 		<div className={classes.list}>Loading...</div>
 	) : (
 		<div className={classes.list}>
-			{currentMovies.map(movie => (
-				<MovieCard
-					key={movie.id}
-					title={movie.title}
-					rating={movie.rating}
-					posterUrl={movie.poster}
-					times={movieTimes[movie.id]}
-				/>
-			))}
+			{!filteredMovies ? (
+				<Typography variant='h10'>Could not find any movies :/</Typography>
+			) : (
+				filteredMovies.map(movie => (
+					<MovieCard
+						key={movie.id}
+						title={movie.title}
+						rating={movie.rating}
+						posterUrl={movie.poster}
+						times={movieTimes[movie.id]}
+					/>
+				))
+			)}
 		</div>
 	);
 }
