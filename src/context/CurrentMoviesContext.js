@@ -77,23 +77,6 @@ export function CurrentMoviesProvider ( { children } ) {
     } );
     const [ currentMovies, setCurrentMovies ] = useState( [] );
 
-
-    // const getTheaterMovies = theaterId => {
-    //     if ( theatersList == [] ) return;
-    //     const currentTheater = theatersList.filter( theater => theater.id === theaterId );
-    //     const currentMovieIds = currentTheater.map( theater => Object.keys( theater.showtimes ) );
-    //     const theaterMovies = movies.filter( movie => currentMovieIds.includes( movie.id ) );
-    //     return theaterMovies;
-    // };
-
-    // useEffect( () => {
-    //     if ( theatersList !== [] ) {
-    //         const newMovies = getTheaterMovies( "2030c64ce72b4e4605cb01f2ba405b7d" );
-    //         console.log( newMovies );
-    //         // setCurrentMovies( newMovies );
-    //     };
-    // }, [ theatersList ] );
-
     return (
         <CurrentTheaterContext.Provider value={ [ currentTheater, setCurrentTheater ] }>
             <CurrentMoviesContext.Provider value={ [ currentMovies, setCurrentMovies ] }>

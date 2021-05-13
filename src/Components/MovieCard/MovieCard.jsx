@@ -50,11 +50,11 @@ export default function MovieCard({ id, title, rating, posterUrl, times }) {
 					</Typography>
 				</CardContent>
 				<div className={classes.times}>
-					{/* {times.map(time => (
+					{times.map(time => (
 						<Typography variant='subtitle1' color='textSecondary'>
 							{time}
 						</Typography>
-					))} */}
+					))}
 				</div>
 			</div>
 		</Card>

@@ -16,30 +16,27 @@ const useStyles = makeStyles(theme => ({
 
 function MovieList() {
 	const classes = useStyles();
-	const [movies, setMovies] = useMovie();
+	const [movies, moviesLoading] = useMovie();
 	const [currentTheater, setCurrentTheater] = useCurrentTheater();
 	const [currentMovies, setCurrentMovies] = useCurrentMovies();
 
 	const getMovieInfo = movieId => {
-		if (!movies) return;
 		const movieArray = movies.filter(item => item.id === movieId);
 		return movieArray[0];
 	};
 
 	const getMovieTimes = movieId => {
-		return currentTheater['showtimes'].movieId;
+		return Object.values(currentTheater['showtimes'][movieId]);
 	};
 
 	useEffect(() => {
-		console.log(currentTheater);
+		console.log('movies', movies);
 		try {
 			const getMoviesByTheater = () => {
 				if (currentTheater) {
+					console.log();
 					const movieIdArray = Object.keys(currentTheater['showtimes']);
-					console.log(movieIdArray);
 					const moviesByTheater = movieIdArray.map(id => getMovieInfo(id));
-					console.log(movies);
-					console.log('movies by theater', moviesByTheater);
 					setCurrentMovies(moviesByTheater);
 				}
 			};
@@ -47,19 +44,21 @@ function MovieList() {
 		} catch (e) {
 			console.log(e);
 		}
-	}, [currentTheater]);
+	}, [currentTheater, movies]);
 
-	return (
+	return moviesLoading ? (
+		<div className={classes.list}>Loading...</div>
+	) : (
 		<div className={classes.list}>
-			{/* {currentMovies.map(movie => (
+			{currentMovies.map(movie => (
 				<MovieCard
 					key={movie.id}
 					title={movie.title}
 					rating={movie.rating}
 					posterUrl={movie.poster}
-					// times={getMovieTimes(movie.id)}
+					times={getMovieTimes(movie.id)}
 				/>
-			))} */}
+			))}
 		</div>
 	);
 }

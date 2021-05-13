@@ -8,9 +8,9 @@ export function useMovie () {
 }
 
 export function MovieProvider ( { children } ) {
-    const [ movies, setMovies ] = useFetchData( '/api/movies' );
+    const [ movies, moviesLoading] = useFetchData( '/api/movies' );
     return (
-        <MovieContext.Provider value={ [ movies, setMovies ] }>
+        <MovieContext.Provider value={ [ movies, moviesLoading ] }>
             { children }
         </MovieContext.Provider>
     );
