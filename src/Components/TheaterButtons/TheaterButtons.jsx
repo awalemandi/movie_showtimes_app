@@ -53,7 +53,10 @@ export default function TheaterButtons() {
 					fullWidth
 				>
 					{theatersList.map(theater => (
-						<Button key={theater.id} onClick={changeCurrentTheater(theater.id)}>
+						<Button
+							key={theater.id}
+							onClick={() => changeCurrentTheater(theater.id)}
+						>
 							{theater.name}
 						</Button>
 					))}
