@@ -8,9 +8,9 @@ export function useTheater () {
 }
 
 export function TheaterProvider ( { children } ) {
-    const [ theatersList, setTheatersList ] = useFetchData( '/api/theaters' );
+    const [ theatersList, theaterLoading ] = useFetchData( '/api/theaters' );
     return (
-        <TheaterContext.Provider value={ [ theatersList, setTheatersList ] }>
+        <TheaterContext.Provider value={ [ theatersList, theaterLoading ] }>
             { children }
         </TheaterContext.Provider>
     );

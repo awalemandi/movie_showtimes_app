@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useMovie } from '../../context/MovieContext';
 import { useCurrentMovies } from '../../context/CurrentMoviesContext';
 import { useCurrentTheater } from '../../context/CurrentMoviesContext';
@@ -19,14 +19,11 @@ function MovieList() {
 	const [movies, moviesLoading] = useMovie();
 	const [currentTheater, setCurrentTheater] = useCurrentTheater();
 	const [currentMovies, setCurrentMovies] = useCurrentMovies();
+	const [movieTimes, setMovieTimes] = useState({});
 
 	const getMovieInfo = movieId => {
 		const movieArray = movies.filter(item => item.id === movieId);
 		return movieArray[0];
-	};
-
-	const getMovieTimes = movieId => {
-		return Object.values(currentTheater['showtimes'][movieId]);
 	};
 
 	useEffect(() => {
@@ -46,6 +43,18 @@ function MovieList() {
 		}
 	}, [currentTheater, movies]);
 
+	const getMovieTimes = movieId => {
+		if (currentTheater) {
+			return Object.values(currentTheater['showtimes'][movieId]);
+		}
+	};
+	useEffect(() => {
+		if (currentTheater) {
+			const movieShowTimes = currentTheater['showtimes'];
+			setMovieTimes(movieShowTimes);
+		}
+	}, [currentTheater]);
+
 	return moviesLoading ? (
 		<div className={classes.list}>Loading...</div>
 	) : (
@@ -56,7 +65,7 @@ function MovieList() {
 					title={movie.title}
 					rating={movie.rating}
 					posterUrl={movie.poster}
-					times={getMovieTimes(movie.id)}
+					times={movieTimes[movie.id]}
 				/>
 			))}
 		</div>
