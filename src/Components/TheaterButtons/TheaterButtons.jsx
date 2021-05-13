@@ -15,6 +15,14 @@ const useStyles = makeStyles(theme => ({
 		'& > *': {
 			margin: theme.spacing(1),
 		},
+		button: {
+			'&:hover': {
+				borderBottom: `solid 5px ${theme.palette.primary.main}`,
+			},
+			'&.Mui-selected': {
+				borderBottom: `solid 5px ${theme.palette.primary.main}`,
+			},
+		},
 	},
 }));
 
@@ -41,9 +49,15 @@ export default function TheaterButtons() {
 					orientation={matches ? 'horizontal' : 'vertical'}
 					fullWidth
 				>
-					<Button key={1}>Loading..</Button>
-					<Button key={2}>Loading..</Button>
-					<Button key={3}>Loading..</Button>
+					<Button key={1} className={classes.butto}>
+						Loading..
+					</Button>
+					<Button key={2} className={classes.butto}>
+						Loading..
+					</Button>
+					<Button key={3} className={classes.butto}>
+						Loading..
+					</Button>
 				</ButtonGroup>
 			) : (
 				<ButtonGroup
@@ -56,6 +70,7 @@ export default function TheaterButtons() {
 						<Button
 							key={theater.id}
 							onClick={() => changeCurrentTheater(theater.id)}
+							className={classes.button}
 						>
 							{theater.name}
 						</Button>

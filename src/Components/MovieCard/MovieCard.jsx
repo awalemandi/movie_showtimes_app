@@ -8,9 +8,11 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles(theme => ({
 	root: {
 		display: 'flex',
+		width: '25rem',
 		margin: theme.spacing(1),
 		[theme.breakpoints.down('sm')]: {
 			flexDirection: 'column',
+			width: '15rem',
 		},
 	},
 	details: {
@@ -21,7 +23,11 @@ const useStyles = makeStyles(theme => ({
 		flex: '1 0 auto',
 	},
 	cover: {
-		width: 200,
+		width: '50%',
+		[theme.breakpoints.down('sm')]: {
+			width: '100%',
+			height: '20rem',
+		},
 	},
 	times: {
 		display: 'flex',
@@ -45,13 +51,17 @@ export default function MovieCard({ id, title, rating, posterUrl, times }) {
 					<Typography component='h5' variant='h5'>
 						{title}
 					</Typography>
-					<Typography variant='subtitle1' color='textSecondary'>
+					<Typography variant='body1' color='textSecondary'>
 						({rating})
 					</Typography>
 				</CardContent>
 				<div className={classes.times}>
 					{times.map(time => (
-						<Typography variant='subtitle1' color='textSecondary'>
+						<Typography
+							variant='subtitle1'
+							color='textSecondary'
+							key={Math.random() * 999}
+						>
 							{time}
 						</Typography>
 					))}

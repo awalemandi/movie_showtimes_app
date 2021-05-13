@@ -27,7 +27,6 @@ function MovieList() {
 	};
 
 	useEffect(() => {
-		console.log('movies', movies);
 		try {
 			const getMoviesByTheater = () => {
 				if (currentTheater) {
