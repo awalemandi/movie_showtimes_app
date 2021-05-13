@@ -56,15 +56,16 @@ export default function MovieCard({ id, title, rating, posterUrl, times }) {
 					</Typography>
 				</CardContent>
 				<div className={classes.times}>
-					{times.map(time => (
-						<Typography
-							variant='subtitle1'
-							color='textSecondary'
-							key={Math.random() * 999}
-						>
-							{time}
-						</Typography>
-					))}
+					{times &&
+						times.map(time => (
+							<Typography
+								variant='subtitle1'
+								color='textSecondary'
+								key={Math.random() * 999}
+							>
+								{time}
+							</Typography>
+						))}
 				</div>
 			</div>
 		</Card>
