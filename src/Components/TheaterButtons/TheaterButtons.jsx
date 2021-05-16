@@ -33,6 +33,7 @@ export default function TheaterButtons() {
 	const [theatersList, theaterLoading] = useTheater();
 	const [currentTheater, setCurrentTheater] = useCurrentTheater();
 
+	//changes the current theater state based on the theater selected
 	const changeCurrentTheater = theaterId => {
 		const selectedTheaterArray = theatersList.filter(
 			theater => theater.id === theaterId

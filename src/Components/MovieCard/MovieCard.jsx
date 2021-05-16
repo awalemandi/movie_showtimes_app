@@ -59,7 +59,7 @@ export default function MovieCard({ id, title, rating, posterUrl, times }) {
 					{times &&
 						times.map(time => (
 							<Typography
-								variant='subtitle1'
+								variant='caption'
 								color='textSecondary'
 								key={Math.random() * 999}
 							>
